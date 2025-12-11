@@ -1,9 +1,9 @@
 # Exercice 1 : Installation de Docker et vérification de l’environnement
 ## Question 1.b.
-![Question_1B.png](./Captures/Question_1B.png)  
+![Question_1B.png](./Captures/TP1/Question_1B.png)  
 _Docker est correctement installé_
 ## Question 1.c.
-![Question_1C.png](./Captures/Question_1C.png)  
+![Question_1C.png](./Captures/TP1/Question_1C.png)  
 _Résultat de la commande docker ps -a_
 Cette commande `docker ps -a` liste l’ensemble des conteneurs présents sur le système. Le paramètre `-a` permet de lister tous les conteneurs, et sans lui, seuls les conteneurs en cours d’exécution sont listés.
 # Exercice 2 : Premiers pas avec Docker : images et conteneurs
@@ -18,7 +18,7 @@ Après exécution de ce code, comme expliqué en partie dans le `docker run hell
 ## Question 2.c.
 C'est parce qu'après que tout le code donné soit exécuté, Docker n'a plus rien a exécuter et ferme proprement le conteneur. Un conteneur reste en "Running" uniquement tant que son processus PID 1 tourne.
 ## Question 2.d.
-![Question_2D.png](./Captures/Question_2D.png)
+![Question_2D.png](./Captures/TP1/Question_2D.png)
 _Résultat des commandes_
 Je constate que le conteneur tourne sur la même version que la machine hôte, ce qui nous avait été expliqué en cours (comme quoi les conteneurs partagent le même noyau que leur machine hôte).
 # Exercice 3 : Construire une première image Docker avec une mini-API FastAPI
@@ -43,25 +43,25 @@ RUN pip install fastapi uvicorn
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 ## Question 3.c.
-![Question_3C.png](./Captures/Question_3C.png)
+![Question_3C.png](./Captures/TP1/Question_3C.png)
 _Le conteneur s'est bien construit avec les fichiers complétés plus tôt dans cet exercice_
 # Exercice 4 : Exécuter l’API FastAPI dans un conteneur Docker
 ## Question 4.a.
 Le paramètre `-p 8000:8000` associe le port 8000 du conteneur au port 8000 de la machine hôte. Ça agit un peu comme un "mapping", et ici ça nous permet d'accéder à l'API health depuis la machine hôte (via curl ou un navigateur Web)
 ## Question 4.b.
-![Question_4B_1.png](./Captures/Question_4B_1.png)
+![Question_4B_1.png](./Captures/TP1/Question_4B_1.png)
 _Réponse attendue avec curl..._
-![Question_4B_2.png](./Captures/Question_4B_2.png)
+![Question_4B_2.png](./Captures/TP1/Question_4B_2.png)
 _...et dans un navigateur Web depuis l'hôte._
 ## Question 4.c.
-![Question_4C.png](./Captures/Question_4C.png)
+![Question_4C.png](./Captures/TP1/Question_4C.png)
 _Résultat de la commande docker ps_
 La seule ligne qui apparaît est la ligne qui correspond au conteneur `simple-api`, vu qu'on n'a pas ajouté le paramètre `-a`.
 - Le nom du conteneur est un nom généré automatiquement car je n'ai pas spécifié de nom à sa construction. Ici, c'est `elated_hofstadter`.
 - L'image utilisée est l'image `simple-api`.
 - Le port mappé est le port `8000`, comme vu dans la colonne `PORTS` sur la capture d'écran.
 ## Question 4.d.
-![Question_4D.png](./Captures/Question_4D.png)
+![Question_4D.png](./Captures/TP1/Question_4D.png)
 _ps et ps -a après avoir run docker stop 269d2b5a28e5_
 La différence entre ces deux commandes, `docker ps` et `docker ps -a`, est que le paramètre `-a` fait en sorte que la commande liste tous les conteneurs, contre seulement les conteneurs en cours d'exécution sans lui.
 # Exercice 5 : Démarrer un mini-système multi-conteneurs avec Docker Compose
@@ -88,10 +88,10 @@ services:
 			- db
 ```
 ## Question 5.c.
-![Question_5C.png](./Captures/Question_5C.png)
+![Question_5C.png](./Captures/TP1/Question_5C.png)
 _Les services db et api sont bien démarrés et en route_
 ## Question 5.d.
-![Question_5D.png](./Captures/Question_5D.png)
+![Question_5D.png](./Captures/TP1/Question_5D.png)
 _L'API fonctionne bien correctement_
 ## Question 5.e.
 La différence est que `docker-compose down` arrête et retire complètement tout ce qui a été créé par `docker-compose up` (réseaux, volumes, images), et docker stop ne fait qu'arrêter les containers en cours d'exécution sans les retirer (ce qui permet de pouvoir les remettre en route par la suite).
@@ -102,7 +102,7 @@ La différence est que `docker-compose down` arrête et retire complètement tou
 - `-U demo` fait en sorte que ça se connecte en tant qu'utilisateur PostgreSQL "`demo`"
 - `-d demo` fait en sorte que ça se connecte à la basse de données "`demo`"
 ## Question 6.b.
-![Question_6B.png](./Captures/Question_6B.png)
+![Question_6B.png](./Captures/TP1/Question_6B.png)
 _Résultats des commandes PostgreSQL_
 On constate que la version de PostgreSQL est 16.11, que PostgreSQL est compilé par `gcc` (qui provient de l'hôte), et que la base de données courante est `demo`.
 ## Question 6.c.
@@ -113,17 +113,17 @@ Dans notre cas :
 L'API (ou d'autres services Docker) peut s'y connecter de manière automatique avec ces variables spécifiées, au travers du réseau interne généré par Docker. 
 # Exercice 7 : Déboguer des conteneurs Docker : commandes essentielles et bonnes pratiques
 ## Question 7.a.
-![Question_7A.png](./Captures/Question_7A.png)
+![Question_7A.png](./Captures/TP1/Question_7A.png)
 ## Question 7.b.
-![Question_7B.png](./Captures/Question_7B.png)
+![Question_7B.png](./Captures/TP1/Question_7B.png)
 _Résultat des commandes_
 On observe que l'API contient un cache Python, et que la version Python 3.13.10 y est installée, comme spécifié dans le Dockerfile.
 ## Question 7.c.
-![Question_7C.png](./Captures/Question_7C.png)
+![Question_7C.png](./Captures/TP1/Question_7C.png)
 _L'API marche bien après avoir redémarré_
 Il peut être utile de ne redémarrer que le service API si par exemple la configuration API a changé, ou si l'API est figée (memory leak, ...), ou quand l'API a besoin d'une reconnexion à la base de données.
 ## Question 7.d.
-![Question_7D.png](./Captures/Question_7D.png)
+![Question_7D.png](./Captures/TP1/Question_7D.png)
 _Erreur lors de l'exécution de la première commande (après avoir renommé app.py en appi.py et modifié le Dockerfile en conséquence)_
 On constate que l'erreur provient du fait que Docker Compose cherche un module "app" (correspondant à `app.py`) mais ne le trouve pas.
 ## Question 7.e.
