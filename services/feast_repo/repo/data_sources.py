@@ -1,0 +1,58 @@
+from feast.infra.offline_stores.contrib.postgres_offline_store.postgres_source import PostgreSQLSource
+
+subs_profile_source = PostgreSQLSource(
+    name="subs_profile_source",
+    query="""
+        SELECT
+            user_id,
+            as_of,
+            plan_stream_tv,
+            plan_stream_movies,
+            paperless_billing,
+            country,
+            currency
+        FROM subscriptions_profile_snapshots
+    """,
+    timestamp_field="as_of",
+)
+
+usage_agg_30d_source = PostgreSQLSource(
+    name="usage_agg_30d_source",
+    query="""
+        SELECT
+            user_id,
+            as_of,
+            watch_hours_30d,
+            avg_session_mins_7d,
+            unique_devices_30d,
+            skips_7d,
+            rebuffer_events_7d
+        FROM usage_agg_30d_snapshots
+    """,
+    timestamp_field="as_of",
+)
+
+payments_agg_90d_source = PostgreSQLSource(
+    name="payments_agg_90d_source",
+    query="""
+        SELECT
+            user_id,
+            as_of,
+            failed_payments_90d
+        FROM payments_agg_90d_snapshots
+    """,
+    timestamp_field="as_of",
+)
+
+support_agg_90d_source = PostgreSQLSource(
+    name="support_agg_90d_source",
+    query="""
+        SELECT
+            user_id,
+            as_of,
+            tickets_90d,
+            avg_resolution_hours_90d
+        FROM support_agg_90d_snapshots
+    """,
+    timestamp_field="as_of",
+)

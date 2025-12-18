@@ -25,6 +25,15 @@ services:
     volumes:
       - ./services/prefect:/opt/prefect/flows
       - ./data:/data:ro
+  
+  feast:
+    build: ./services/feast_repo
+    depends_on:
+      - postgres
+    environment:
+      FEAST_USAGE: "False"
+    volumes:
+      - ./services/feast_repo/repo:/repo
 
 volumes:
   pgdata:
