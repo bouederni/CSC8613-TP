@@ -6,11 +6,12 @@ subs_profile_source = PostgreSQLSource(
         SELECT
             user_id,
             as_of,
+            months_active,
+            monthly_fee,
+            paperless_billing,
             plan_stream_tv,
             plan_stream_movies,
-            paperless_billing,
-            country,
-            currency
+            net_service
         FROM subscriptions_profile_snapshots
     """,
     timestamp_field="as_of",
@@ -50,8 +51,8 @@ support_agg_90d_source = PostgreSQLSource(
         SELECT
             user_id,
             as_of,
-            tickets_90d,
-            avg_resolution_hours_90d
+            support_tickets_90d,
+            ticket_avg_resolution_hrs_90d
         FROM support_agg_90d_snapshots
     """,
     timestamp_field="as_of",

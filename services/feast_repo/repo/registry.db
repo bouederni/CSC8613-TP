@@ -1,1 +1,74 @@
-1"$3fe05c6e-d7ea-4006-9df0-9e7d07e03bc3*¸šŠÊ°¶Ù 
+
+w
+W
+user8ReprÃ©sente un utilisateur unique identifiÃ© par user_id"user_idJ
+streamflow
+³©Êàë‡‡¿±Ê€öâè
+A
+!
+__dummy"
+__dummy_idJ
+streamflow
+³©Êèƒ‡¿±Ê¸òëè1"$9cbe8e1b-7c95-49f0-8e19-be112d57ed02*¿±Êğ…2ÿ
+º
+subs_profile_fv
+streamflowuser"
+months_active"
+monthly_fee"
+paperless_billing"
+plan_stream_tv"
+plan_stream_movies"
+net_service*
+ownermlops-course:öas_of‚×
+Ô{"name": "subs_profile_source", "query": "\n        SELECT\n            user_id,\n            as_of,\n            months_active,\n            monthly_fee,\n            paperless_billing,\n            plan_stream_tv,\n            plan_stream_movies,\n            net_service\n        FROM subscriptions_profile_snapshots\n    ", "table": ""}ŠZfeast.infra.offline_stores.contrib.postgres_offline_store.postgres_source.PostgreSQLSource¢subs_profile_source’¿±Ê¨¥¹Á"¿±ÊˆÏ¯Ø@b
+user_id@
+³©Ê‰ù†¿±Ê€ù‹Û
+€È¬€¾ë­
+€È¬€ˆÊ2æ
+¡
+support_agg_90d_fv
+streamflowuser"
+support_tickets_90d"!
+ticket_avg_resolution_hrs_90d*
+ownermlops-course:–as_of‚ô
+ñ{"name": "support_agg_90d_source", "query": "\n        SELECT\n            user_id,\n            as_of,\n            support_tickets_90d,\n            ticket_avg_resolution_hrs_90d\n        FROM support_agg_90d_snapshots\n    ", "table": ""}ŠZfeast.infra.offline_stores.contrib.postgres_offline_store.postgres_source.PostgreSQLSource¢support_agg_90d_source’¿±Ê˜ñÙÁ"¿±Ê¨“ú×@b
+user_id@
+³©ÊÈßä†¿±Êèü­Ş
+€È¬€¾ë­
+€È¬€ˆÊ2Ù
+”
+usage_agg_30d_fv
+streamflowuser"
+watch_hours_30d"
+avg_session_mins_7d"
+unique_devices_30d"
+skips_7d"
+rebuffer_events_7d*
+ownermlops-course:Ûas_of‚»
+¸{"name": "usage_agg_30d_source", "query": "\n        SELECT\n            user_id,\n            as_of,\n            watch_hours_30d,\n            avg_session_mins_7d,\n            unique_devices_30d,\n            skips_7d,\n            rebuffer_events_7d\n        FROM usage_agg_30d_snapshots\n    ", "table": ""}ŠZfeast.infra.offline_stores.contrib.postgres_offline_store.postgres_source.PostgreSQLSource¢usage_agg_30d_source’¿±ÊàÈÁ"¿±Ê ÑùÚ@b
+user_id@
+³©Ê¨êÖ†¿±Ê©Šß
+€È¬€¾ë­
+€È¬€ˆÊ2›
+Ö
+payments_agg_90d_fv
+streamflowuser"
+failed_payments_90d*
+ownermlops-course:ías_of‚Ê
+Ç{"name": "payments_agg_90d_source", "query": "\n        SELECT\n            user_id,\n            as_of,\n            failed_payments_90d\n        FROM payments_agg_90d_snapshots\n    ", "table": ""}ŠZfeast.infra.offline_stores.contrib.postgres_offline_store.postgres_source.PostgreSQLSource¢payments_agg_90d_source’¿±ÊØÊÑÁ"¿±ÊÜØ@b
+user_id@
+³©Ê¨œğ†¿±Êˆ¾áå
+€È¬€¾ë­
+€È¬€ˆÊb£as_of‚ô
+ñ{"name": "support_agg_90d_source", "query": "\n        SELECT\n            user_id,\n            as_of,\n            support_tickets_90d,\n            ticket_avg_resolution_hrs_90d\n        FROM support_agg_90d_snapshots\n    ", "table": ""}ŠZfeast.infra.offline_stores.contrib.postgres_offline_store.postgres_source.PostgreSQLSource¢support_agg_90d_sourceª
+streamflow’³©Ê¨±ø"³©Êğî¦…búas_of‚Ê
+Ç{"name": "payments_agg_90d_source", "query": "\n        SELECT\n            user_id,\n            as_of,\n            failed_payments_90d\n        FROM payments_agg_90d_snapshots\n    ", "table": ""}ŠZfeast.infra.offline_stores.contrib.postgres_offline_store.postgres_source.PostgreSQLSource¢payments_agg_90d_sourceª
+streamflow’³©Ê€÷ó"³©Ê Ç®…bƒas_of‚×
+Ô{"name": "subs_profile_source", "query": "\n        SELECT\n            user_id,\n            as_of,\n            months_active,\n            monthly_fee,\n            paperless_billing,\n            plan_stream_tv,\n            plan_stream_movies,\n            net_service\n        FROM subscriptions_profile_snapshots\n    ", "table": ""}ŠZfeast.infra.offline_stores.contrib.postgres_offline_store.postgres_source.PostgreSQLSource¢subs_profile_sourceª
+streamflow’³©Êàõé"³©ÊˆÀ³…bèas_of‚»
+¸{"name": "usage_agg_30d_source", "query": "\n        SELECT\n            user_id,\n            as_of,\n            watch_hours_30d,\n            avg_session_mins_7d,\n            unique_devices_30d,\n            skips_7d,\n            rebuffer_events_7d\n        FROM usage_agg_30d_snapshots\n    ", "table": ""}ŠZfeast.infra.offline_stores.contrib.postgres_offline_store.postgres_source.PostgreSQLSource¢usage_agg_30d_sourceª
+streamflow’³©Ê°öî"³©ÊÈĞ†Š,
+
+
+streamflow
+³©ÊàÅğ„¿±ÊˆîœÍ

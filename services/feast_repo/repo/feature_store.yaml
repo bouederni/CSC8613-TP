@@ -1,6 +1,8 @@
 project: streamflow
 provider: local
 registry: registry.db
+repo_path: /repo
+entity_key_serialization_version: 3
 
 offline_store:
   type: postgres
@@ -19,5 +21,3 @@ online_store:
   db_schema: public
   user: streamflow
   password: streamflow
-
-entity_key_serialization_version: 2
